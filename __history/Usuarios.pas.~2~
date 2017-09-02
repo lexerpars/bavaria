@@ -1,0 +1,65 @@
+unit Usuarios;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Controls.Presentation, FMX.ListView.Types, FMX.ListView.Appearances,
+  FMX.ListView.Adapters.Base, FMX.MultiView, FMX.ListView, System.ImageList,
+  FMX.ImgList, FMX.Layouts;
+
+type
+  TFrame1 = class(TFrame)
+    ScaledLayout1: TScaledLayout;
+    ListaUsuarios: TListView;
+    Icono: TImageList;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+  procedure carga_usuarios();
+    { Public declarations }
+  end;
+
+implementation
+uses Datos;
+
+{$R *.fmx}
+
+
+procedure TFrame1.carga_usuarios;
+var
+  listit : TListViewItem;
+begin
+  Datos.ModuloDatos.Consulta.SQL.Clear; //SQL.Add('SELECT AGENTE,NOMBRE FROM AGENTE WHERE TIPO=:TIPO AND UPPER(ESTATUS)=:ESTATUS');
+  {Datos.Conexion.Consulta.ParamByName('TIPO').AsString:='Mecanico';
+  Datos.Conexion.Consulta.ParamByName('ESTATUS').AsString:='ALTA';
+  try
+    Datos.Conexion.Consulta.ExecSQL;
+
+    if Datos.Conexion.Consulta.RecordCount > 0 then
+    begin
+       Listit := listausuarios.Items.Add;
+      listit.Text :=Datos.Conexion.Consulta.FieldByName('NOMBRE').AsString;
+      listit.ImageIndex:=0;
+    end;
+    Datos.Conexion.Consulta.Close;
+
+  finally
+
+  end;   }
+end;
+procedure TFrame1.Button1Click(Sender: TObject);
+var
+  listit : TListViewItem;
+begin
+
+      Listit := listausuarios.Items.Add;
+      listit.Text := 'Usuario 1';
+      listit.ImageIndex:=0;
+
+end;
+
+end.

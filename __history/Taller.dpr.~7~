@@ -1,0 +1,15 @@
+program Taller;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  PanelMaestro in 'PanelMaestro.pas' {Form1},
+  Usuarios in 'Usuarios.pas' {Frame1: TFrame};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

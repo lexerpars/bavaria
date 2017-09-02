@@ -1,0 +1,48 @@
+unit Datos;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, UniProvider, SQLServerUniProvider, Data.DB,
+  MemDS, DBAccess, Uni;
+
+type
+  TConexion = class(TDataModule)
+    Conexion: TUniConnection;
+    Consulta: TUniQuery;
+    SQLServerUniProvider1: TSQLServerUniProvider;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Conexion: TConexion;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+{$R *.dfm}
+
+
+{
+Informacion:
+Conexion: Objecto para establecer la conexion a la base de datos. Se utiliza
+tipo de conexion directa.  Parametros Loginprompt deshabilitado y sin conexion.
+
+Consulta: Objeto con el cual se realizan las consultas a la base de datos.
+Se utilixs la conexion establecida en el objecto conexion.
+
+SQLServerUniProvider1 : Driver para conectarse a SQL Server
+
+
+
+}
+
+
+
+
+
+end.
