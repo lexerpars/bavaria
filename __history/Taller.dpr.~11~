@@ -1,0 +1,19 @@
+program Taller;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Principal in 'Principal.pas' {Form2},
+  Data in 'Data.pas' {DataModule1: TDataModule},
+  Logs in 'Logs.pas' {Form1},
+  Usuarios in 'Usuarios.pas' {Frame1: TFrame};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

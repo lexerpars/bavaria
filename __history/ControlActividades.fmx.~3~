@@ -1,0 +1,65 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 623
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object ScaledLayout1: TScaledLayout
+    Align = Client
+    OriginalWidth = 623.000000000000000000
+    OriginalHeight = 480.000000000000000000
+    Size.Width = 623.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    object ToolBar1: TToolBar
+      Size.Width = 623.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object NombreAgente: TSpeedButton
+        Align = Left
+        StyledSettings = [Family, Style, FontColor]
+        Images = Form2.ImageList1
+        ImageIndex = 3
+        Size.Width = 300.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'toolbutton'
+        Text = 'NombreAgente'
+        TextSettings.Font.Size = 11.000000000000000000
+      end
+    end
+    object Ordenes: TListView
+      ItemAppearanceClassName = 'TListItemAppearance'
+      ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+      HeaderAppearanceClassName = 'TListHeaderObjects'
+      FooterAppearanceClassName = 'TListHeaderObjects'
+      Position.Y = 48.000000000000000000
+      Size.Width = 209.000000000000000000
+      Size.Height = 385.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+    object ToolBar2: TToolBar
+      Align = Bottom
+      Position.Y = 432.000000000000000000
+      Size.Width = 623.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object SpeedButton1: TSpeedButton
+        Align = Left
+        Images = Form2.ImageList1
+        ImageIndex = 4
+        Size.Width = 160.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Regresar'
+      end
+    end
+  end
+end

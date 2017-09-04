@@ -1,0 +1,32 @@
+unit ControlActividades;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Controls.Presentation, FMX.Layouts, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView;
+
+type
+  TForm3 = class(TForm)
+    ToolBar1: TToolBar;
+    NombreAgente: TSpeedButton;
+    ScaledLayout1: TScaledLayout;
+    Ordenes: TListView;
+    ToolBar2: TToolBar;
+    SpeedButton1: TSpeedButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+Uses Principal;
+{$R *.fmx}
+
+end.

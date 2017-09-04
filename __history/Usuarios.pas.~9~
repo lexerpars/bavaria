@@ -1,0 +1,72 @@
+unit Usuarios;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
+  FMX.ListView, FMX.Controls.Presentation, FMX.Objects, FMX.Layouts,
+  MultiDetailAppearanceU;
+
+type
+  TFrame1 = class(TFrame)
+    ScaledLayout1: TScaledLayout;
+    ToolBar1: TToolBar;
+    SpeedButton1: TSpeedButton;
+    ListadoUsuarios: TListView;
+    SpeedButton2: TSpeedButton;
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+  procedure cargar_usuarios;
+    { Public declarations }
+  end;
+
+implementation
+uses Datas;
+//Se utiliza la Unidad de datos, para heredar los objetos y sus atributos que permitan realizar las consultas
+//Para obtener el listado de usuarios de aplicacion, en la tabla agente.
+{$R *.fmx}
+
+procedure TFrame1.cargar_usuarios;
+var
+  Items : TListViewItem;
+begin
+  //Este procedimiento realiza la carga de los usuarios que tienen acceso a esta aplicacion
+  Datas.DataModule1.Consulta.SQL.Clear;
+  Datas.DataModule1.Consulta.SQL.Add('SELECT agente,Nombre FROM agente WHERE estatus=:Estatus AND Tipo=:Tipo');
+  Datas.DataModule1.Consulta.ParamByName('Estatus').AsString:='ALTA';
+  Datas.DataModule1.Consulta.ParamByName('Tipo').AsString:='Mecanico';
+  try
+    Datas.DataModule1.Consulta.ExecSQL;
+
+    if Datas.DataModule1.Consulta.RecordCount > 0 then
+    begin
+      while not Datas.DataModule1.Consulta.Eof do
+      begin
+          items := ListadoUsuarios.Items.Add;
+          items.Detail:=Datas.DataModule1.Consulta.FieldByName('agente').AsString;
+          items.Text:=Datas.DataModule1.Consulta.FieldByName('agente').AsString;
+          Items.Data[TMultiDetailAppearanceNames.Detail1]:='Detalle';
+          next;
+      end;
+    end;
+  finally
+
+  end;
+
+end;
+
+procedure TFrame1.SpeedButton1Click(Sender: TObject);
+var
+  vItems : TListViewItem;
+begin
+   vItems := ListadoUsuarios.Items.add;
+    vItems.Detail:='ID';
+    vItems.Text:='Usuario1';
+    vItems.Data[TMultiDetailAppearanceNames.Detail1]:='Detalle';
+end;
+
+end.

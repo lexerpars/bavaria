@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/09/01 20:25:05.000.560,=C:\Users\desarrollo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/09/02 14:20:30.000.657,=C:\Users\desarrollo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/09/02 14:24:49.000.543,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Principal.pas=C:\Users\desarrollo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/09/02 14:24:49.000.543,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Principal.fmx=C:\Users\desarrollo\Documents\Embarcadero\Studio\Projects\Unit2.fmx</Transaction>
+    <Transaction>2017/09/02 14:24:54.000.210,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Taller.dproj=C:\Users\desarrollo\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2017/09/02 14:28:17.000.437,=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.pas</Transaction>
+    <Transaction>2017/09/02 14:32:02.000.311,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Data.dfm=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.dfm</Transaction>
+    <Transaction>2017/09/02 14:32:02.000.311,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Data.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.pas</Transaction>
+    <Transaction>2017/09/02 14:42:17.000.056,=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.pas</Transaction>
+    <Transaction>2017/09/02 14:43:36.000.617,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Logs.fmx=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.fmx</Transaction>
+    <Transaction>2017/09/02 14:43:36.000.617,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Logs.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.pas</Transaction>
+    <Transaction>2017/09/02 14:44:45.000.034,=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.pas</Transaction>
+    <Transaction>2017/09/02 14:45:20.000.056,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Usuarios.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.pas</Transaction>
+    <Transaction>2017/09/02 14:45:20.000.056,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Usuarios.fmx=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit1.fmx</Transaction>
+    <Transaction>2017/09/02 16:38:58.000.446,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Data.dfm=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Datas.dfm</Transaction>
+    <Transaction>2017/09/02 16:38:58.000.446,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Data.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Datas.pas</Transaction>
+    <Transaction>2017/09/02 19:50:26.000.590,=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit2.pas</Transaction>
+    <Transaction>2017/09/02 19:57:23.000.386,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit2.fmx=C:\Users\desarrollo\Desktop\Bavaria\bavaria\GestionActividades.fmx</Transaction>
+    <Transaction>2017/09/02 19:57:23.000.386,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit2.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\GestionActividades.pas</Transaction>
+    <Transaction>2017/09/02 20:15:04.000.888,=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit3.pas</Transaction>
+    <Transaction>2017/09/02 20:15:58.000.089,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit3.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\ControlUsuarios.pas</Transaction>
+    <Transaction>2017/09/02 20:15:58.000.089,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit3.fmx=C:\Users\desarrollo\Desktop\Bavaria\bavaria\ControlUsuarios.fmx</Transaction>
+    <Transaction>2017/09/03 06:21:43.000.143,C:\Users\desarrollo\Desktop\Bavaria\bavaria\GestionActividades.pas=</Transaction>
+    <Transaction>2017/09/03 06:23:29.000.018,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Usuarios.pas=</Transaction>
+    <Transaction>2017/09/03 06:27:51.000.882,C:\Users\desarrollo\Desktop\Bavaria\bavaria\ControlUsuarios.pas=</Transaction>
+    <Transaction>2017/09/03 06:28:51.000.370,=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit3.pas</Transaction>
+    <Transaction>2017/09/03 06:33:16.000.713,C:\Users\desarrollo\Desktop\Bavaria\bavaria\ControlActividades.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit3.pas</Transaction>
+    <Transaction>2017/09/03 06:33:16.000.713,C:\Users\desarrollo\Desktop\Bavaria\bavaria\ControlActividades.fmx=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit3.fmx</Transaction>
+    <Transaction>2017/09/03 19:24:05.000.206,=C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit4.pas</Transaction>
+    <Transaction>2017/09/03 19:38:29.000.936,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit4.pas=C:\Users\desarrollo\Desktop\Bavaria\bavaria\DetalleControlActividades.pas</Transaction>
+    <Transaction>2017/09/03 19:38:29.000.936,C:\Users\desarrollo\Desktop\Bavaria\bavaria\Unit4.fmx=C:\Users\desarrollo\Desktop\Bavaria\bavaria\DetalleControlActividades.fmx</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile Android="0123456789ABCDEF"/>
+	</ActiveMobileDevice>
+</BorlandProject>
