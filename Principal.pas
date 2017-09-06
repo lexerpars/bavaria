@@ -21,9 +21,10 @@ type
     SpeedButton3: TSpeedButton;
     SpeedButton5: TSpeedButton;
     NombresUsuarios: TMemo;
-    procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure ListadoUsuariosClick(Sender: TObject);
+    procedure ListadoUsuariosDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,7 +43,7 @@ Uses Datas,DetalleControlActividades;
 
 
 
-procedure TForm2.SpeedButton2Click(Sender: TObject);
+procedure TForm2.ListadoUsuariosClick(Sender: TObject);
 begin
 
     if ListadoUsuarios.Selected <> Nil then
@@ -69,9 +70,9 @@ begin
                  Datas.DataModule1.Consulta.Close;
                  Datas.DataModule1.Consulta.SQL.Clear;
                  datas.DataModule1.Consulta.SQL.Add('select sum(DATEDIFF(DAY,Fecha_inicio,Fecha_fin)) as Dias '+
-                 ', sum(DATEDIFF(Hour,Fecha_inicio,Fecha_fin)) as Horas '+
-                 ', sum(DATEDIFF(Minute,Fecha_inicio,Fecha_fin)) as Minutos '+
-                 ',sum(DATEDIFF(Second,Fecha_inicio,Fecha_fin)) as Segundos '+
+                 ', sum(DATEDIFF(Hour,Fecha_inicio,Fecha_fin))%24 as Horas '+
+                 ', sum(DATEDIFF(Minute,Fecha_inicio,Fecha_fin))%60 as Minutos '+
+                 ',sum(DATEDIFF(Second,Fecha_inicio,Fecha_fin))%60 as Segundos '+
                  'from actividad_taller '+
                  'where orden=:orden and agente=:agente and tarea=:tarea'
                  );
@@ -82,7 +83,80 @@ begin
                  Form4.Segundos.Text:=Datas.DataModule1.Consulta.FieldByName('Segundos').AsString;
                  Form4.Minutos.Text:=Datas.DataModule1.Consulta.FieldByName('Minutos').AsString;
                  Form4.Horas.Text:=Datas.DataModule1.Consulta.FieldByName('Horas').AsString;
-                 Form4.Timer1.Enabled:=True;
+                 DetalleControlActividades.hr:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Horas').AsString);
+                 DetalleControlActividades.min:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Minutos').AsString);
+                 DetalleControlActividades.seg:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Segundos').AsString);
+
+                // Form4.Timer1.Enabled:=True;
+                 Datas.DataModule1.Consulta.Close;
+
+
+            end
+            else
+            begin
+                form2.Visible:=False;
+                ControlActividades.Form3.NombreAgente.Text:=NombresUsuarios.Lines.Strings[ListadoUsuarios.ItemIndex];
+                ControlActividades.Form3.Visible:=True;
+                ControlActividades.Form3.cargar_ordenes;
+            end;
+
+         finally
+
+         end;
+
+
+
+
+
+    end;
+end;
+
+
+procedure TForm2.ListadoUsuariosDblClick(Sender: TObject);
+begin
+
+    if ListadoUsuarios.Selected <> Nil then
+    begin
+         try
+            Datas.DataModule1.Consulta.SQL.Clear;
+            Datas.DataModule1.Consulta.SQL.Add('select t.id as ID, orden,tarea as actividad, cte.nombre as cliente,v.fecharequerida as fecha from actividad_taller t '+
+            'left join venta v on v.id = t.orden '+
+            'left join cte on cte.cliente = v.cliente where t.agente=:agente and t.estatus=:estatus ');
+            Datas.DataModule1.Consulta.ParamByName('agente').AsString:=ListadoUsuarios.Items[ListadoUsuarios.ItemIndex].Text;
+            Datas.DataModule1.Consulta.ParamByName('estatus').AsString:='TRABAJANDO';
+            Datas.DataModule1.Consulta.ExecSQL;
+
+            if Datas.DataModule1.Consulta.RecordCount > 0 then
+            begin
+                 ID_Orden := Datas.DataModule1.Consulta.FieldByName('orden').AsInteger;
+                 mi_id := Datas.DataModule1.Consulta.FieldByName('ID').AsInteger;
+                 agente:=ListadoUsuarios.Items[ListadoUsuarios.ItemIndex].Text;
+                 Form2.Visible:=False;
+                 Form4.Visible:=True;
+                 Form4.DescripcionExtra.Text:=Datas.DataModule1.Consulta.FieldByName('actividad').AsString;
+                 Form4.Pendiente.Enabled:=True;
+                 Form4.Finalizar.Enabled:=True;
+                 Datas.DataModule1.Consulta.Close;
+                 Datas.DataModule1.Consulta.SQL.Clear;
+                 datas.DataModule1.Consulta.SQL.Add('select sum(DATEDIFF(DAY,Fecha_inicio,Fecha_fin)) as Dias '+
+                 ', sum(DATEDIFF(Hour,Fecha_inicio,Fecha_fin))%24 as Horas '+
+                 ', sum(DATEDIFF(Minute,Fecha_inicio,Fecha_fin))%60 as Minutos '+
+                 ',sum(DATEDIFF(Second,Fecha_inicio,Fecha_fin))%60 as Segundos '+
+                 'from actividad_taller '+
+                 'where orden=:orden and agente=:agente and tarea=:tarea'
+                 );
+                 Datas.DataModule1.Consulta.ParamByName('orden').AsInteger:=ID_Orden;
+                 Datas.DataModule1.Consulta.ParamByName('agente').AsString:=ListadoUsuarios.Items[ListadoUsuarios.ItemIndex].Text;
+                 datas.DataModule1.Consulta.ParamByName('tarea').AsString:=Form4.DescripcionExtra.Text;
+                 Datas.DataModule1.Consulta.ExecSQL;
+                 Form4.Segundos.Text:=Datas.DataModule1.Consulta.FieldByName('Segundos').AsString;
+                 Form4.Minutos.Text:=Datas.DataModule1.Consulta.FieldByName('Minutos').AsString;
+                 Form4.Horas.Text:=Datas.DataModule1.Consulta.FieldByName('Horas').AsString;
+                 DetalleControlActividades.hr:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Horas').AsString);
+                 DetalleControlActividades.min:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Minutos').AsString);
+                 DetalleControlActividades.seg:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Segundos').AsString);
+
+                // Form4.Timer1.Enabled:=True;
                  Datas.DataModule1.Consulta.Close;
 
 

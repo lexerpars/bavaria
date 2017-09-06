@@ -7,7 +7,7 @@ object DataModule1: TDataModule1
     Port = 1433
     Database = 'Bavaria_pruebas'
     Username = 'Programador'
-    Server = 'DESARROLLO-PC'
+    Server = '192.1.2.34'
     LoginPrompt = False
     Left = 24
     Top = 16

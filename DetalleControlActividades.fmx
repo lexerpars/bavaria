@@ -8,11 +8,11 @@ object Form4: TForm4
   Fill.Gradient.Points = <
     item
       Color = xFF022582
-      Offset = 0.608695626258850000
+      Offset = 0.608695626258850100
     end
     item
       Color = xFF291212
-      Offset = 0.993788838386535700
+      Offset = 0.993788838386535600
     end>
   Fill.Gradient.StartPosition.X = 0.500000000000000000
   Fill.Gradient.StopPosition.X = 0.499999970197677600
@@ -113,8 +113,8 @@ object Form4: TForm4
         Size.PlatformDefault = False
         TabOrder = 5
         Visible = False
-        Viewport.Width = 469.000000000000000000
-        Viewport.Height = 285.000000000000000000
+        Viewport.Width = 473.000000000000000000
+        Viewport.Height = 289.000000000000000000
       end
       object Panel1: TPanel
         Position.X = 48.000000000000000000
@@ -126,7 +126,7 @@ object Form4: TForm4
         object Horas: TLabel
           StyledSettings = [Family, FontColor]
           Position.X = 16.000000000000000000
-          Size.Width = 41.000000000000000000
+          Size.Width = 49.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 26.000000000000000000
@@ -148,9 +148,9 @@ object Form4: TForm4
         end
         object Minutos: TLabel
           StyledSettings = [Family, FontColor]
-          Position.X = 200.000000000000000000
+          Position.X = 184.000000000000000000
           Position.Y = -1.000000000000000000
-          Size.Width = 41.000000000000000000
+          Size.Width = 57.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 26.000000000000000000
@@ -174,7 +174,7 @@ object Form4: TForm4
           StyledSettings = [Family, FontColor]
           Position.X = 392.000000000000000000
           Position.Y = -1.000000000000000000
-          Size.Width = 41.000000000000000000
+          Size.Width = 57.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 26.000000000000000000

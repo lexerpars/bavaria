@@ -97,9 +97,9 @@ begin
 
     Datas.DataModule1.Consulta.SQL.Clear;
     datas.DataModule1.Consulta.SQL.Add('select sum(DATEDIFF(DAY,Fecha_inicio,Fecha_fin)) as Dias '+
-    ', sum(DATEDIFF(Hour,Fecha_inicio,Fecha_fin)) as Horas '+
-    ', sum(DATEDIFF(Minute,Fecha_inicio,Fecha_fin)) as Minutos '+
-    ',sum(DATEDIFF(Second,Fecha_inicio,Fecha_fin)) as Segundos '+
+    ', sum(DATEDIFF(Hour,Fecha_inicio,Fecha_fin))%24 as Horas '+
+    ', sum(DATEDIFF(Minute,Fecha_inicio,Fecha_fin))%60 as Minutos '+
+    ',sum(DATEDIFF(Second,Fecha_inicio,Fecha_fin))%60 as Segundos '+
     'from actividad_taller '+
     'where orden=:orden and agente=:agente and tarea=:tarea'
     );
@@ -110,7 +110,10 @@ begin
     Form4.Segundos.Text:=Datas.DataModule1.Consulta.FieldByName('Segundos').AsString;
     Form4.Minutos.Text:=Datas.DataModule1.Consulta.FieldByName('Minutos').AsString;
     Form4.Horas.Text:=Datas.DataModule1.Consulta.FieldByName('Horas').AsString;
-    Form4.Timer1.Enabled:=True;
+    DetalleControlActividades.hr:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Horas').AsString);
+    DetalleControlActividades.min:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Minutos').AsString);
+    DetalleControlActividades.seg:= StrToInt(Datas.DataModule1.Consulta.FieldByName('Segundos').AsString);
+    //Form4.Timer1.Enabled:=True;
     Datas.DataModule1.Consulta.Close;
 end;
 
@@ -178,6 +181,7 @@ procedure TForm3.SpeedButton1Click(Sender: TObject);
 begin
   Form3.Visible:=False;
   Form2.Visible:=True;
+  Form2.ListadoUsuarios.Selected:=nil;
 end;
 
 procedure TForm3.SpeedButton2Click(Sender: TObject);

@@ -37,12 +37,14 @@ type
     { Private declarations }
   public
   procedure controltiempo;
+
     { Public declarations }
   end;
 
 var
   Form4: TForm4;
-  hr,min,seg:integer;
+  hr,min,seg:Integer;
+
 
 implementation
 Uses Principal,ControlActividades,Datas;
@@ -147,6 +149,9 @@ begin
 
        Pendiente.Enabled:=False;
        Finalizar.Enabled:=False;
+       Form4.Close;
+       Form3.cargar_ordenes;
+       Form3.Visible:=true;
 
 end;
 
@@ -174,9 +179,7 @@ begin
     Iniciar.Enabled:=False;
     Pendiente.Enabled:=True;
     Finalizar.Enabled:=True;
-    seg:=0;
-    min:=0;
-    hr:=0;
+   
 
     try
        Datas.DataModule1.Consulta.SQL.Clear;
@@ -219,6 +222,8 @@ begin
 
     end;
     Timer1.Enabled:=True;
+    Form2.Visible:=True;
+    Form4.Close;
 end;
 
 procedure TForm4.PendienteClick(Sender: TObject);
@@ -254,6 +259,10 @@ begin
           Pendiente.Enabled:=False;
           Finalizar.Enabled:=False;
           Iniciar.Enabled:=True;
+          Timer1.Enabled:=False;
+          Form4.Close;
+          Form3.cargar_ordenes;
+          Form3.Visible:=true;
 
         finally
 
