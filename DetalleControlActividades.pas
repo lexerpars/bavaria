@@ -27,16 +27,20 @@ type
     Segundos: TLabel;
     Label7: TLabel;
     Timer1: TTimer;
+    ToolBar2: TToolBar;
+    SpeedButton1: TSpeedButton;
     procedure HomeClick(Sender: TObject);
     procedure IniciarClick(Sender: TObject);
     procedure PendienteClick(Sender: TObject);
     procedure FinalizarClick(Sender: TObject);
     procedure CerrarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
   procedure controltiempo;
+  procedure inicializa_tiempo;
 
     { Public declarations }
   end;
@@ -44,11 +48,42 @@ type
 var
   Form4: TForm4;
   hr,min,seg:Integer;
+  precio,uts:string;
 
 
 implementation
 Uses Principal,ControlActividades,Datas;
 {$R *.fmx}
+
+procedure TForm4.inicializa_tiempo;
+begin
+
+    Datas.DataModule1.Consulta.SQL.Clear;
+    Datas.DataModule1.Consulta.SQL.Add('select isnull(sum(DATEDIFF(DAY,Fecha_inicio,isnull(Fecha_fin,getdate()))),0) as Dias '+
+        ', isnull(sum(DATEDIFF(Hour,Fecha_inicio,isnull(Fecha_fin,getdate())))%24,0) as Horas '+
+        ', isnull(sum(DATEDIFF(Minute,Fecha_inicio,isnull(Fecha_fin,getdate())))%60,0) as Minutos '+
+        ',isnull(sum(DATEDIFF(Second,Fecha_inicio,isnull(Fecha_fin,getdate())))%60,0) as Segundos '+
+        'from actividad_taller '+
+        'where orden=:orden and agente=:agente and tarea=:tarea'
+        );
+        Datas.DataModule1.Consulta.ParamByName('orden').AsInteger:=Principal.id_orden;
+        Datas.DataModule1.Consulta.ParamByName('agente').AsString:=Form2.ListadoUsuarios.Items[Form2.ListadoUsuarios.ItemIndex].Text;
+        Datas.DataModule1.Consulta.ParamByName('tarea').AsString:=Form4.DescripcionExtra.Text;
+        Datas.DataModule1.Consulta.ExecSQL;
+
+                  hr:=Datas.DataModule1.Consulta.FieldByName('Horas').AsInteger;
+                  min:= Datas.DataModule1.Consulta.FieldByName('Minutos').AsInteger;
+                  seg:= Datas.DataModule1.Consulta.FieldByName('Segundos').AsInteger;
+                 Form4.Segundos.Text:=IntToStr(seg);
+                 Form4.Minutos.Text:=IntToStr(min);
+                 Form4.Horas.Text:=IntToStr(hr);
+
+                // Form4.inicializa_tiempo;
+                 Form4.Timer1.Enabled:=True;
+                 Datas.DataModule1.Consulta.Close;
+
+
+end;
 
 procedure TForm4.controltiempo;
 begin
@@ -104,15 +139,8 @@ begin
       Segundos.Text := '0'+IntToStr(seg);
     end;
 
-
-
-
-
-
-
-
-
 end;
+
 procedure TForm4.CerrarClick(Sender: TObject);
 begin
   Application.Terminate;
@@ -149,26 +177,25 @@ begin
 
        Pendiente.Enabled:=False;
        Finalizar.Enabled:=False;
-       Form4.Close;
-       Form3.cargar_ordenes;
-       Form3.Visible:=true;
+
+
+       Form2.ListadoUsuarios.Selected:=nil;
+       Form4.Visible:=False;
+       Form2.Visible:=True;
+
+       {Form3.cargar_ordenes;
+       form3.ListaDetalle.Items.Clear;
+       Form3.Visible:=true;   }
 
 end;
 
 procedure TForm4.HomeClick(Sender: TObject);
 begin
-  Form4.Visible:=False;
-  finalizar.Enabled:=False;
-  pendiente.Enabled:=False;
-  timer1.Enabled:=False;
   Form2.Visible:=True;
-  Minutos.Text:='00';
-  Segundos.Text:='00';
-  Horas.Text:='00';
-  min:=0;
-  seg:=0;
-  hr:=0;
-
+  Form4.Close;
+  Form3.ListaDetalle.Items.Clear;
+  Form3.Close;
+  Form2.ListadoUsuarios.Selected:=nil;
 end;
 
 procedure TForm4.IniciarClick(Sender: TObject);
@@ -221,8 +248,9 @@ begin
     finally
 
     end;
-    Timer1.Enabled:=True;
+    //Timer1.Enabled:=True;
     Form2.Visible:=True;
+    Form2.ListadoUsuarios.Selected:=nil;
     Form4.Close;
 end;
 
@@ -263,6 +291,9 @@ begin
           Form4.Close;
           Form3.cargar_ordenes;
           Form3.Visible:=true;
+          Form3.NombreAgente.Text:=Principal.Nombre;
+          Form3.ListaDetalle.Items.Clear;
+          Form3.Ordenes.Selected:=nil;
 
         finally
 
@@ -270,6 +301,28 @@ begin
 
     end;
     Datas.DataModule1.Consulta.Close;
+
+end;
+
+
+
+
+procedure TForm4.SpeedButton1Click(Sender: TObject);
+begin
+  if Principal.trabajando = 0  then
+  begin
+    Form3.Visible:=True;
+    Form3.ListaDetalle.Items.Clear;
+    Form3.Ordenes.Selected:=nil;
+    Form4.Close;
+  end;
+ if Principal.trabajando = 1 then
+ begin
+   Form2.ListadoUsuarios.Selected:=nil;
+   Form4.Visible:=False;
+   Form2.Visible:=True;
+   Principal.Trabajando:=0;
+ end;
 
 end;
 

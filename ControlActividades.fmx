@@ -55,8 +55,8 @@ object Form3: TForm3
         Position.Y = 8.000000000000000000
         TabOrder = 1
         Visible = False
-        Viewport.Width = 50.000000000000000000
-        Viewport.Height = 50.000000000000000000
+        Viewport.Width = 42.000000000000000000
+        Viewport.Height = 42.000000000000000000
       end
     end
     object Ordenes: TListView
@@ -79,8 +79,8 @@ object Form3: TForm3
         Position.Y = 64.000000000000000000
         TabOrder = 0
         Visible = False
-        Viewport.Width = 50.000000000000000000
-        Viewport.Height = 50.000000000000000000
+        Viewport.Width = 42.000000000000000000
+        Viewport.Height = 42.000000000000000000
       end
     end
     object ToolBar2: TToolBar
@@ -114,6 +114,26 @@ object Form3: TForm3
       TabOrder = 3
       ItemAppearanceObjects.HeaderObjects.Text.Font.Size = 10.000000000000000000
       OnChange = ListaDetalleChange
+      object UTS: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 8.000000000000000000
+        Position.Y = 144.000000000000000000
+        TabOrder = 0
+        Visible = False
+        Viewport.Width = 42.000000000000000000
+        Viewport.Height = 42.000000000000000000
+      end
+      object PRECIO: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 24.000000000000000000
+        Position.Y = 248.000000000000000000
+        TabOrder = 1
+        Visible = False
+        Viewport.Width = 42.000000000000000000
+        Viewport.Height = 42.000000000000000000
+      end
     end
   end
 end

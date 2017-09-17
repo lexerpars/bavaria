@@ -21,6 +21,8 @@ type
     IDSOrdenes: TMemo;
     ListaDetalle: TListView;
     DescripcionTarea: TMemo;
+    UTS: TMemo;
+    PRECIO: TMemo;
     procedure SpeedButton2Click(Sender: TObject);
     procedure OrdenesChange(Sender: TObject);
     procedure ListaDetalleChange(Sender: TObject);
@@ -96,10 +98,10 @@ begin
     Form4.Iniciar.Enabled:=True;
 
     Datas.DataModule1.Consulta.SQL.Clear;
-    datas.DataModule1.Consulta.SQL.Add('select sum(DATEDIFF(DAY,Fecha_inicio,Fecha_fin)) as Dias '+
-    ', sum(DATEDIFF(Hour,Fecha_inicio,Fecha_fin))%24 as Horas '+
-    ', sum(DATEDIFF(Minute,Fecha_inicio,Fecha_fin))%60 as Minutos '+
-    ',sum(DATEDIFF(Second,Fecha_inicio,Fecha_fin))%60 as Segundos '+
+    datas.DataModule1.Consulta.SQL.Add('select isnull(sum(DATEDIFF(DAY,Fecha_inicio,isnull(Fecha_fin,getdate()))),0) as Dias '+
+    ', isnull(sum(DATEDIFF(Hour,Fecha_inicio,isnull(Fecha_fin,getdate())))%24,0) as Horas '+
+    ', isnull(sum(DATEDIFF(Minute,Fecha_inicio,isnull(Fecha_fin,getdate())))%60,0) as Minutos '+
+    ',isnull(sum(DATEDIFF(Second,Fecha_inicio,isnull(Fecha_fin,getdate())))%60,0) as Segundos '+
     'from actividad_taller '+
     'where orden=:orden and agente=:agente and tarea=:tarea'
     );
@@ -179,7 +181,7 @@ end;
 
 procedure TForm3.SpeedButton1Click(Sender: TObject);
 begin
-  Form3.Visible:=False;
+  Form3.Close;
   Form2.Visible:=True;
   Form2.ListadoUsuarios.Selected:=nil;
 end;
